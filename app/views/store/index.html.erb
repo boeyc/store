@@ -1,0 +1,31 @@
+<h1>Store Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+         
+         <td><%= image_tag product.photo.url, :size => "100x100" %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= button_to 'Add to Cart', line_items_path(:product_id => product) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>

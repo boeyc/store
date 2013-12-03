@@ -1,0 +1,13 @@
+<%= simple_form_for(@product) do |f| %>
+ 
+
+  <div class="field">
+    <%= f.input :name %>
+    <%= f.input :price %>
+    <%= f.input :photo, label: 'Upload Product Image', :class => 'btn-primary' %>
+    <%= f.input :inventory %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
