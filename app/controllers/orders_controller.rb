@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
         
         @user = User.find(@order.user_id)
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @order }
@@ -51,12 +52,23 @@ end
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
-    @order.add_line_items_from_cart(current_cart)
+
+
+     @order.add_line_items_from_cart(current_cart)
+    
+      @order.line_items.each do |item|
+        item.product.remove_from_inventory!(item.quantity)
+      end
+
+
     @order.user_id = current_user.id
     respond_to do |format|
       if @order.save
+
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+         
+
 
         format.html { redirect_to @order, notice: 'Order was successfully created.' } #add back root_url
         format.json { render json: @order, status: :created, location: @order }

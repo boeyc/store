@@ -10,10 +10,19 @@ ActiveAdmin.register Product do
   	end
     column :name                     
     column :price    
-    column :inventory           
-                
+    column :inventory
+    column "Total Orders", :total_quantity                   
     default_actions                   
   end          
 
-
-end
+    form do |f|                         
+        f.inputs "Product Details" do 
+       
+      f.input :name                  
+      f.input :photo    
+      f.input :price    
+      f.input :inventory    
+         end                       
+    f.actions                         
+  end                               
+end  

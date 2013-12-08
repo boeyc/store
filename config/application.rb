@@ -58,5 +58,9 @@ module Store
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |g|
+  g.scaffold_controller "scaffold_controller"
+end
   end
 end

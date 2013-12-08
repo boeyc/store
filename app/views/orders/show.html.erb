@@ -25,7 +25,8 @@
 </p>
 <p>
   <b>Line item:</b>
-	<%= @order.total_quantity %> 
+ <%= @order.line_items.product %>
+  
 </p>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

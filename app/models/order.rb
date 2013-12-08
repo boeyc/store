@@ -1,6 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :address, :name, :user, :user_id
-
+  attr_accessible :address, :name, :user, :user_id, :line_items, :product_id
 
   has_many :line_items, :dependent => :destroy #deletes all line items accociated with order when destroyed
   belongs_to :user
@@ -12,13 +11,16 @@ class Order < ActiveRecord::Base
   	end
   end
 
+        def total_quantity
+                  line_items.to_a.sum { |item| item.quantity}
+        end
 
-	def total_quantity
-	  	line_items.to_a.sum { |item| item.quantity}
-	end
+        def total_price
+                line_items.to_a.sum { |item| item.total_price}
+        end
 
-	def total_price
-		line_items.to_a.sum { |item| item.total_price}
-	end
+
 
 end
+
+
