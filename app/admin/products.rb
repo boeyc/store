@@ -11,6 +11,9 @@ ActiveAdmin.register Product do
     column :name                     
     column :price    
     column :inventory
+
+
+    column :category_name
     column "Total Orders", :total_quantity                   
     default_actions                   
   end          
@@ -18,7 +21,8 @@ ActiveAdmin.register Product do
     form do |f|                         
         f.inputs "Product Details" do 
        
-      f.input :name                  
+      f.input :name
+      f.input :category_id, :as => :radio, :collection => Category.all
       f.input :photo    
       f.input :price    
       f.input :inventory    
