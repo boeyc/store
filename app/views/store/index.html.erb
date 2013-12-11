@@ -1,4 +1,11 @@
-<h1>Store Listings</h1>
+<h1>Welcome to my Store</h1>
+
+
+  <% @categories.each do |category| %>
+
+    <td><%= link_to category.name, category %></td>
+
+    <% end %>
 
 <table>
   <thead>
@@ -28,4 +35,3 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>

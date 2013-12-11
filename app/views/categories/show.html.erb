@@ -1,8 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @category.name %>
+
+<table>
+  <tr>
+    <th> </th>
+    <th> Name</th>
+    <th> Price </th>
+    <th> Inventory</th>
+  </tr>
+
+<h2><% @category.name %></h2>
+
+<% @category.products.each do |product| %>
+  <tr>
+         <td><%= image_tag product.photo.url %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+          <td><%= product.inventory %></td>
+
+<% end %>
+</table>
 </p>
 
 

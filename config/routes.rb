@@ -1,6 +1,7 @@
 Store::Application.routes.draw do
-  resources :categories
-
+  resources :categories do
+    resources :products
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -20,7 +21,7 @@ Store::Application.routes.draw do
   
   get "store/index"
 
-  resources :products
+  
 
 
   # The priority is based upon order of creation:
