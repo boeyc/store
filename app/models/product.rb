@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   attr_accessible :name, :photo, :price, :inventory, :product_id, :category_id
   has_attached_file :photo
   has_many :line_items
-  
+  validates :inventory, presence: true
   belongs_to :category
 
   	def no_delete_flag

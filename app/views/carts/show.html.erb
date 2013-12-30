@@ -16,8 +16,16 @@
 
 	<tr>
 		<td><%= item.product.name %> </td>
-		<td><%= item.quantity %> </td>
+	
+		<%= simple_form_for(item) do |f| %>
+		 <td><%= f.input :quantity, label: false, input_html: {style: 'height:40px;'} %></td>
+
+        
 		<td><%= number_to_currency(item.total_price) %> </td>
+
+		 <td><%= f.button :submit %></td>
+
+        <% end %>
 <% end %>
 	</tr>
 

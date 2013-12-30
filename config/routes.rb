@@ -8,9 +8,10 @@ Store::Application.routes.draw do
 
   resources :orders
 
-
+  get "line_items/update"
 
   resources :line_items
+
 
 
   resources :carts

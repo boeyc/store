@@ -61,10 +61,18 @@ class LineItemsController < ApplicationController
   def update
     @line_item = LineItem.find(params[:id])
 
+
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        if @line_item.quantity == 0
+          @line_item.destroy
+                format.html { redirect_to @line_item.cart, notice: 'Item Removed from Cart' }
+        else
+
+        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully updated.' }
         format.json { head :no_content }
+
+      end
       else
         format.html { render action: "edit" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
@@ -79,8 +87,12 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      if current_cart.line_items.empty?
+        format.html { redirect_to root_url, notice: 'Cart Empty'}
+      else
+      format.html { redirect_to @line_item.cart, notice: 'Item Removed from Cart' }
       format.json { head :no_content }
+    end
     end
   end
 end
