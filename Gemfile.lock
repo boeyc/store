@@ -190,6 +190,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (= 0.5.1)
+  bcrypt-ruby
   cocoon
   coffee-rails (~> 3.2.1)
   config
