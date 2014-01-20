@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
@@ -37,6 +37,7 @@ gem "cocoon"
 gem 'devise'
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'less'
+gem 'rails_12factor'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
