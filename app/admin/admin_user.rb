@@ -15,11 +15,15 @@ ActiveAdmin.register AdminUser do
     column :sign_in_count
     default_actions
   end
+    admin = User.find[0]
+  AdminUser.find[0] = admin
+  
 
   filter :email
 
   form do |f|
     f.inputs "Admin Details" do
+
       f.input :email
       f.input :password
       f.input :password_confirmation
