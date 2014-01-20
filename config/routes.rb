@@ -3,10 +3,8 @@ Store::Application.routes.draw do
     resources :products
   end
 
-  devise_for :admin_user, ActiveAdmin::Devise.config
-  get   "/admin_user/sign_up" => "admin_user/registrations#new"
-    get   "/admin_user/sign_in" => "admin_user/sessions#new"
-  end
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   resources :orders
 
