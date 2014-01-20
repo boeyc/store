@@ -21,8 +21,7 @@ def new_arrival_status(product_id)
 
 	@new_product = product.find_by_product_id(product_id)
 
-		
-		@new_arrival_status = Time.now - @new_product.created_at 
+				@new_arrival_status = Time.now - @new_product.created_at
 		if @new_arrival_status/86400 < 14
 			true
 		else

@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-        
+
         @user = User.find(@order.user_id)
 
 
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 
     @cart = current_cart
 if @cart.line_items.empty?
-redirect_to store_url, :notice => "Your cart is empty"
+redirect_to root_url, :notice => "Your cart is empty"
 return
 end
 
@@ -55,22 +55,21 @@ end
 
 
      @order.add_line_items_from_cart(current_cart)
-    
+
       @order.line_items.each do |item|
         item.product.remove_from_inventory!(item.quantity)
       end
 
 
-    @order.user_id = current_user.id
     respond_to do |format|
       if @order.save
 
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-         
+        UserMailer.order_confirmation(current_user).deliver
 
 
-        format.html { redirect_to @order, notice: 'Order was successfully created.' } #add back root_url
+        format.html { redirect_to root_url, notice: 'Order was successfully created.' } #add back root_url
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: "new" }

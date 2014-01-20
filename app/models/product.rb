@@ -15,9 +15,9 @@ class Product < ActiveRecord::Base
   end
 
   def total_quantity
-  
+
       line_items.where('order_id IS NOT NULL').to_a.sum{ |item| item.quantity}
-   
+
 end
 
 def category_name
@@ -29,10 +29,9 @@ end
 
 def remove_from_inventory!(qty)
   self.inventory = inventory - qty
-      sql = "UPDATE inventories 
-           SET quantity = (quantity - #{qty}) 
-           WHERE id = #{self.id}"
-    ActiveRecord::Base.connection.execute(sql)
-
+  sql = "UPDATE products
+        SET inventory = (inventory - #{qty})
+        WHERE id = #{self.id}"
+ActiveRecord::Base.connection.execute(sql)
 end
      end
