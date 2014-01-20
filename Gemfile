@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '1.9.3'
 gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
@@ -21,13 +21,9 @@ group :assets do
 end
 gem "paperclip", "~> 3.0"
 gem 'simple_form'
-group :development, :test do
-  gem 'therubyracer'
-end
 
-group :production do
-  gem 'therubyracer-heroku'
-end
+  gem 'therubyracer'
+
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem "jquery-rails", "< 3.0.0"
