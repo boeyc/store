@@ -1,11 +1,11 @@
-Store::Application.routes.draw do
+dStore::Application.routes.draw do
   resources :categories do
     resources :products
   end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-end
+
   resources :orders
 
   get "line_items/update"
