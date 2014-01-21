@@ -3,6 +3,5 @@ class StoreController < ApplicationController
   	@categories = Category.all
   	@products = Product.all
 
-  	
   end
 end
